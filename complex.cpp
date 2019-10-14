@@ -31,10 +31,9 @@ double Complex::sini()const{
 	return s;
 }
 
-
-Complex& Complex::operator+= (const Complex& rhs)
+Complex Complex::operator+ (const Complex& rhs) 
 {
-	Complex sum{0,0};
+	Complex res= *this;
 	double x1 = this->cosi();
 	double y1 = this->sini();
 	double x2 = rhs.cosi();
@@ -42,17 +41,15 @@ Complex& Complex::operator+= (const Complex& rhs)
 	double x=x1+x2;
 	double y=y1+y2;
 
-        sum.arr[0]=std::sqrt(x*x+y*y);
-	sum.arr[1]=atan2(y,x);
-	arr[0]=sum.arr[0];
-	arr[1]=sum.arr[1];
-	//std::cout << sum.arr[0]<<"*(cos("<<sum.arr[1]<<")+i*sin("<<sum.arr[1]<<"))";
-return *this;
+        res.arr[0]=std::sqrt(x*x+y*y);
+	res.arr[1]=atan2(y,x);
+	
+	return res;
 }
 
-Complex& Complex::operator-= (const Complex& rhs)
+Complex Complex::operator- (const Complex& rhs) 
 {
-	Complex raznost{0,0};
+	Complex res = *this;
 	double x1 = this->cosi();
 	double y1 = this->sini();
 	double x2 = rhs.cosi();
@@ -60,62 +57,25 @@ Complex& Complex::operator-= (const Complex& rhs)
 	double x=x1-x2;
 	double y=y1-y2;
 
-        raznost.arr[0]=std::sqrt(x*x+y*y);
-	raznost.arr[1]=atan2(y,x);
-	arr[0]=raznost.arr[0];
-	arr[1]=raznost.arr[1];
-	//std::cout << raznost.arr[0]<<"*(cos("<<raznost.arr[1]<<")+i*sin("<<raznost.arr[1]<<"))";
-return *this;
-
-}
-
-Complex& Complex::operator*= (const Complex& rhs)
-{
-	Complex result{0,0};
-	result.arr[0] = arr[0]*rhs.arr[0];
-	result.arr[1] = arr[1]+ rhs.arr[1];
-	arr[0]=result.arr[0];
-	arr[1]=result.arr[1];
-	//std::cout << result.arr[0]<<"*(cos("<<result.arr[1]<<")+i*sin("<<result.arr[1]<<"))";
-return *this;
-}
-
-Complex& Complex::operator/= (const Complex& rhs)
-{
-	Complex result{0,0};
- 	if (rhs.arr[0]!=0) {result.arr[0] =(arr[0])/rhs.arr[0];}
-	result.arr[1] = arr[1] - rhs.arr[1];
-	arr[0]=result.arr[0];
-	arr[1]=result.arr[1];
-	//std::cout << result.arr[0]<<"*(cos("<<result.arr[1]<<")+i*sin("<<result.arr[1]<<"))";
-return *this;
-}
-
-Complex Complex::operator+ (const Complex& rhs) const
-{
-	Complex res= *this;
-	res+=rhs;
+        res.arr[0]=std::sqrt(x*x+y*y);
+	res.arr[1]=atan2(y,x);
 	return res;
 }
 
-Complex Complex::operator- (const Complex& rhs) const
+Complex Complex::operator* (const Complex& rhs) 
 {
 	Complex res = *this;
-	res-=rhs;
+	res.arr[0] = arr[0]*rhs.arr[0];
+	res.arr[1] = arr[1]+ rhs.arr[1];
+
 	return res;
 }
 
-Complex Complex::operator* (const Complex& rhs) const
+Complex Complex::operator/ (const Complex& rhs) 
 {
 	Complex res = *this;
-	res*=rhs;
-	return res;
-}
-
-Complex Complex::operator/ (const Complex& rhs) const
-{
-	Complex res = *this;
-	res/=rhs;
+	if (rhs.arr[0]!=0){res.arr[0] = arr[0]/rhs.arr[0];} 
+	res.arr[1] = arr[1]-rhs.arr[1];
 	return res;
 }
 

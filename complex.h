@@ -11,14 +11,10 @@ struct Complex{
   double cosi()const;
   double sini()const;
   Complex sopr();
-  Complex& operator+= (const Complex& rhs);
-  Complex& operator-= (const Complex& rhs);
-  Complex& operator*= (const Complex& rhs);
-  Complex& operator/= (const Complex& rhs);
-  Complex operator+ (const Complex& rhs) const;
-  Complex operator- (const Complex& rhs) const;
-  Complex operator* (const Complex& rhs) const;
-  Complex operator/ (const Complex& rhs) const;
+  Complex operator+ (const Complex& rhs); 
+  Complex operator- (const Complex& rhs); 
+  Complex operator* (const Complex& rhs); 
+  Complex operator/ (const Complex& rhs);
 
   bool operator== (const Complex& rhs) const;
   friend std::istream& operator>> (std::istream& in, Complex& rhs);
