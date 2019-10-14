@@ -7,14 +7,14 @@ struct Complex{
   Complex();
   Complex(double a, double b);
 
-  double get(int i);
+  double get(int i) const;
   double cosi()const;
   double sini()const;
-  Complex sopr();
-  Complex operator+ (const Complex& rhs); 
-  Complex operator- (const Complex& rhs); 
-  Complex operator* (const Complex& rhs); 
-  Complex operator/ (const Complex& rhs);
+  Complex sopr() const;
+  Complex operator+ (const Complex& rhs) const; 
+  Complex operator- (const Complex& rhs) const; 
+  Complex operator* (const Complex& rhs) const; 
+  Complex operator/ (const Complex& rhs) const;
 
   bool operator== (const Complex& rhs) const;
   friend std::istream& operator>> (std::istream& in, Complex& rhs);

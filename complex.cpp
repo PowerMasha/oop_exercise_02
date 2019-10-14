@@ -9,7 +9,7 @@ double PI=3.1415926535;
 Complex::Complex(): arr{0,0} {}
 Complex::Complex(double a,double b): arr{a, b} {}
 
-double Complex::get(int i) {
+double Complex::get(int i) const {
 	return arr[i];
 }
 
@@ -31,7 +31,7 @@ double Complex::sini()const{
 	return s;
 }
 
-Complex Complex::operator+ (const Complex& rhs) 
+Complex Complex::operator+ (const Complex& rhs) const
 {
 	Complex res= *this;
 	double x1 = this->cosi();
@@ -47,7 +47,7 @@ Complex Complex::operator+ (const Complex& rhs)
 	return res;
 }
 
-Complex Complex::operator- (const Complex& rhs) 
+Complex Complex::operator- (const Complex& rhs) const
 {
 	Complex res = *this;
 	double x1 = this->cosi();
@@ -62,7 +62,7 @@ Complex Complex::operator- (const Complex& rhs)
 	return res;
 }
 
-Complex Complex::operator* (const Complex& rhs) 
+Complex Complex::operator* (const Complex& rhs) const
 {
 	Complex res = *this;
 	res.arr[0] = arr[0]*rhs.arr[0];
@@ -71,7 +71,7 @@ Complex Complex::operator* (const Complex& rhs)
 	return res;
 }
 
-Complex Complex::operator/ (const Complex& rhs) 
+Complex Complex::operator/ (const Complex& rhs) const
 {
 	Complex res = *this;
 	if (rhs.arr[0]!=0){res.arr[0] = arr[0]/rhs.arr[0];} 
@@ -85,7 +85,7 @@ bool Complex::operator== (const Complex& rhs) const
 }
 
 
-Complex Complex::sopr()
+Complex Complex::sopr() const
 {
 	Complex sop{0,0};
 	sop.arr[0]=arr[0];
